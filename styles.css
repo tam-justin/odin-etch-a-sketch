@@ -1,0 +1,114 @@
+:root {
+    --size: 16;
+}
+
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: lightgray;
+    min-width: 20px;
+}
+
+#header {
+    flex: 1 auto;
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+    margin: 40px;
+}
+
+.body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+#menu {
+    display: flex;
+    width: 200px;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(50, 50, 50);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+    gap: 20px;
+    height: 480px;
+    padding: 10px;
+}
+
+#board {
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    height: 500px;
+    width: 500px;
+    border: 2px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+    background-color: white;
+}
+
+.units {
+    width: calc(100% / var(--size));
+    aspect-ratio: 1;
+    box-sizing: border-box;
+}
+
+.sizing {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+#color-wheel {
+    width: 75px;
+    height: 75px;
+    padding: 0px;
+    border: none;
+    background-color: transparent;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    appearance: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+#color-wheel::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+#color-wheel::-webkit-color-swatch {
+  border: none;
+  border-radius: 50%;
+}
+
+.button {
+    text-transform: uppercase;
+    padding: 10px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    width: 180px;
+    background-color: darkgray;
+    box-shadow: 1px 1px 2px 2px gray;
+}
+
+.button:hover {
+    box-shadow: 0px 2px 10px 5px gray;
+}
+
+.button:active {
+    box-shadow: 0.5 0.5px gray;
+    transform: translateY(5px);
+}
+
+.footer {
+    text-align: center;
+}
+
+.active {
+    background-color: white;
+}
