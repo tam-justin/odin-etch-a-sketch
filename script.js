@@ -50,14 +50,14 @@ borderButton.addEventListener("click", () => {
     if(border == true){
         const arr = document.querySelectorAll(".units");
         for(let i = 0; i < arr.length; i++){
-            arr[i].style.border = "none";
+            arr[i].classList.remove("border");
         }
         borderButton.textContent = "show border";
         border = false;
     }else{
         const arr = document.querySelectorAll(".units");
         for(let i = 0; i < arr.length; i++){
-            arr[i].style.border = "1px solid black";
+            arr[i].classList.add("border");
         }
         borderButton.textContent = "hide border";
         border = true;
@@ -68,8 +68,10 @@ function createBoard(size){
     for(let i = 0; i < size*size; i++){
         const unit = document.createElement("div");
         unit.classList.add("units");
+        if(border == true){
+            unit.classList.add("border");
+        }
         board.appendChild(unit);
-        console.log(i);
     }
 }
 
