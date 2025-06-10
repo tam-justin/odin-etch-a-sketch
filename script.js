@@ -3,8 +3,8 @@ const sizeText = document.getElementById("board-size");
 const board = document.getElementById("board");
 
 let mode = "singleColor";
-
 let border = false;
+let curColor = "black";
 
 const singleButton = document.getElementById("single");
 const colorPicker = document.getElementById("color-wheel");
@@ -12,6 +12,8 @@ const rainbowButton = document.getElementById("rainbow");
 const eraserButton = document.getElementById("eraser");
 const clearButton = document.getElementById("clear");
 const borderButton = document.getElementById("border");
+
+let colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
 
 function activate(newMode){
     if(mode === "singleColor"){
@@ -33,6 +35,29 @@ function activate(newMode){
         mode = "eraser";
     }
 }
+
+clearButton.addEventListener("click", () => {
+    const arr = document.querySelectorAll(".units");
+    for(let i = 0; i < arr.length; i++){
+        arr[i].style.backgroundColor = "white";
+    }
+})
+
+function changeColor(event){
+    if(mode === "singleColor"){
+        event.target.style.backgroundColor = curColor;
+    }else if(mode === "eraser"){
+        event.target.style.backgroundColor = "white";
+    }else if(mode === "rainbow"){
+        let newColor = colors[Math.floor(Math.random()*colors.length)];
+        event.target.style.backgroundColor = newColor;
+    }
+}
+
+colorPicker.addEventListener("input", (event) => {
+    curColor = event.target.value;
+    console.log(curColor);
+})
 
 singleButton.addEventListener("click", () => {
     activate("singleColor");
@@ -71,6 +96,7 @@ function createBoard(size){
         if(border == true){
             unit.classList.add("border");
         }
+        unit.addEventListener("mouseover", changeColor);
         board.appendChild(unit);
     }
 }
@@ -87,4 +113,4 @@ sizeSlider.addEventListener("input", () => {
 });
 
 
-document.onload(createBoard(16));
+window.onload(createBoard(16));
